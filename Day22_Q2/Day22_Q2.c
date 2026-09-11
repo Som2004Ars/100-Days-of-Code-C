@@ -16,17 +16,26 @@ Approximate sum: 4.4
 #include <stdio.h>
 
 int main() {
-    int n, i;
-    float sum = 0;
+    int n, k;
+    double sum = 0.0, term;
 
-    printf("Enter the number of terms: ");
+    printf("Enter the number of terms (n): ");
     scanf("%d", &n);
 
-    for (i = 1; i <= n; i++) {
-        sum += (float)(2 * i - 1) / (2 * i);
+    for (k = 1; k <= n; k++) {
+        if (k == 1) {
+            term = 1.0;
+            printf("Term %d = 1\n", k);
+        } else {
+            double numerator = 2 * k - 1;
+            double denominator = 2 * k;
+            term = numerator / denominator;
+            printf("Term %d = %.0f/%.0f = %.4f\n", k, numerator, denominator, term);
+        }
+        sum += term;
     }
 
-    printf("Sum of the series = %.2f\n", sum);
+    printf("\nSum of the series up to %d terms = %.4f\n", n, sum);
 
     return 0;
 }
